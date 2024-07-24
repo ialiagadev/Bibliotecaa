@@ -1,5 +1,5 @@
 
-/* falta la transoformacion del color de fondo/*
+/* falta la transoformacion del color de fondo se rellene horizontalmente/*
  button {
     background: var(--button-bg-color); /* Color de fondo inicial */
     border: 2px solid var(--border-color); /* Color del borde */
