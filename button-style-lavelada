@@ -1,0 +1,19 @@
+.scroll-horizontal > button {
+  background: var(--background-color); /* Color de fondo inicial */
+  border: 2px solid var(--border-color); /* Color del borde */
+  padding: 10px 20px;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  width: 20rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: skew(-21deg); /* Aplica inclinación */
+  color: var(--text-color); /* Color del texto */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+.scroll-horizontal > button:hover {
+  background-color: var(--border-color); /* Color de fondo en hover */
+  color: white; /* Color del texto en hover */
+}
