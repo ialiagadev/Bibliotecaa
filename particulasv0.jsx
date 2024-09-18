@@ -29,8 +29,9 @@ const FinancialNetwork = () => {
 
   const drawNodes = useCallback((ctx, width, height) => {
     ctx.clearRect(0, 0, width, height)
-    ctx.fillStyle = 'rgba(255, 165, 0, 0.5)'
-    ctx.strokeStyle = 'rgba(255, 165, 0, 0.2)'
+    
+    ctx.strokeStyle = 'rgba(255, 165, 0, 0.4)'
+    ctx.lineWidth = 0.5
 
     const maxDistance = 100
 
@@ -41,8 +42,12 @@ const FinancialNetwork = () => {
       if (node.x < 0 || node.x > width) node.vx *= -1
       if (node.y < 0 || node.y > height) node.vy *= -1
 
+      const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 3)
+      gradient.addColorStop(0, 'rgba(255, 165, 0, 1)')
+      gradient.addColorStop(1, 'rgba(255, 165, 0, 0)')
+      ctx.fillStyle = gradient
       ctx.beginPath()
-      ctx.arc(node.x, node.y, 2, 0, Math.PI * 2)
+      ctx.arc(node.x, node.y, 3, 0, Math.PI * 2)
       ctx.fill()
 
       for (let j = i + 1; j < nodesRef.current.length; j++) {
@@ -64,10 +69,14 @@ const FinancialNetwork = () => {
       const distance = Math.sqrt(dx * dx + dy * dy)
 
       if (distance < maxDistance * 2) {
+        ctx.strokeStyle = 'rgba(255, 165, 0, 0.6)'
+        ctx.lineWidth = 1
         ctx.beginPath()
         ctx.moveTo(node.x, node.y)
         ctx.lineTo(mousePosition.x, mousePosition.y)
         ctx.stroke()
+        ctx.strokeStyle = 'rgba(255, 165, 0, 0.4)'
+        ctx.lineWidth = 0.5
       }
     })
   }, [mousePosition])
@@ -215,7 +224,7 @@ const CenteredTextGlossyNavbar = () => {
   )
 }
 
-export default function Component() {
+export default function FinancialNetworkHeader() {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
