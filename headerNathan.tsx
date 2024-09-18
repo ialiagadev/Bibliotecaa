@@ -39,7 +39,7 @@ export default function Header() {
     renderer.setSize(window.innerWidth, window.innerHeight)
 
     const geometry = new THREE.SphereGeometry(1.5, 32, 32)
-    const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true })
+    const material = new THREE.MeshBasicMaterial({ color: 0xFF6B00, wireframe: true }) // Changed to orange
     const sphere = new THREE.Mesh(geometry, material)
     scene.add(sphere)
 
